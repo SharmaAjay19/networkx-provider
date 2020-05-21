@@ -23,6 +23,5 @@ def processGraph():
     graph.add_edges_from(edges)
     positions = nx.spring_layout(graph)
     positions = {key: list(map(lambda x: round(x, 2), list(value))) for key, value in positions.items()}
-    print(positions)
     res = json.dumps(positions)
     return (res, 200)
