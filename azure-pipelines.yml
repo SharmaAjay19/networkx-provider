@@ -13,12 +13,11 @@ steps:
   - task: CopyFiles@2
     inputs:
       sourceFolder: "$(Build.SourcesDirectory)"
-      contents: "
-      **\ProviderModule**
-      **requirements.txt
-      **web.config
-      "
-      targetFolder: "$(Build.ArtifactStagingDirectory)"
+      Contents: |
+        ProviderModule**
+        requirements.txt
+        web.config
+      TargetFolder: "$(Build.ArtifactStagingDirectory)"
 
   - task: PublishBuildArtifacts@1
     inputs:
