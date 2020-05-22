@@ -10,16 +10,13 @@ trigger:
       - /*
 
 steps:
-  - task: ArchiveFiles@2
+  - task: CopyFiles@2
     inputs:
-      rootFolderOrFile: "$(Build.SourcesDirectory)"
-      includeRootFolder: false
-      archiveType: "zip"
-      archiveFile: "$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip"
-      replaceExistingArchive: true
-      verbose: # (no value); this input is optional
+      sourceFolder: "$(Build.SourcesDirectory)"
+      contents: "**"
+      targetFolder: "$(Build.ArtifactStagingDirectory)"
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: "$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip"
+      pathToPublish: "$(Build.ArtifactStagingDirectory)"
       artifactName: BuildOutput
