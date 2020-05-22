@@ -1,31 +1,57 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "1ccda963-ba01-43a0-9082-f30a57eda2b1",
 		"name": "NetworkxProvider",
-		"_postman_id": "2e4ae6b2-21dd-eb22-4d5a-961737a1849f",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "ProcessGraph",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40e2a7a6-6413-4931-8f0e-d65253f73506",
+						"exec": [
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.json;\r",
+							"    pm.response.to.have.jsonBody(\"1\");\r",
+							"    pm.response.to.have.jsonBody(\"2\");\r",
+							"    pm.response.to.have.jsonBody(\"3\");\r",
+							"    pm.response.to.have.jsonBody(\"4\");\r",
+							"    pm.response.to.have.jsonBody(\"5\");\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"url": "{{NETWORKX_ENDPOINT}}/processGraph",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"nodes\": [1, 2, 3, 4, 5],\n\t\"edges\": [[1,2], [2,4], [1,5]]\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "{{NETWORKX_ENDPOINT}}/processGraph",
+					"host": [
+						"{{NETWORKX_ENDPOINT}}"
+					],
+					"path": [
+						"processGraph"
+					]
+				}
 			},
 			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
