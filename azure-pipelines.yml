@@ -10,6 +10,16 @@ trigger:
       - /*
 
 steps:
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: "$(Build.SourcesDirectory)"
+      contents: "
+      **\ProviderModule**
+      **requirements.txt
+      **web.config
+      "
+      targetFolder: "$(Build.ArtifactStagingDirectory)"
+
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: "$(Build.ArtifactStagingDirectory)"
