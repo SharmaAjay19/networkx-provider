@@ -19,7 +19,16 @@ steps:
         web.config
       TargetFolder: "$(Build.ArtifactStagingDirectory)"
 
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: "$(Build.ArtifactStagingDirectory)"
+      includeRootFolder: false
+      archiveType: "zip"
+      archiveFile: "$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip"
+      replaceExistingArchive: true
+      verbose: # (no value); this input is optional
+
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: "$(Build.ArtifactStagingDirectory)"
+      pathToPublish: "$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip"
       artifactName: BuildOutput
