@@ -14,7 +14,7 @@ steps:
     inputs:
       sourceFolder: "$(Build.SourcesDirectory)"
       Contents: |
-        ProviderModule**
+        ProviderModule\**
         requirements.txt
         web.config
       TargetFolder: "$(Build.ArtifactStagingDirectory)"
