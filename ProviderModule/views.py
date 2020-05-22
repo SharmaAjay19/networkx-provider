@@ -24,4 +24,5 @@ def processGraph():
     positions = nx.spring_layout(graph)
     positions = {key: list(map(lambda x: round(x, 2), list(value))) for key, value in positions.items()}
     res = json.dumps(positions)
+    raise Exception("Some error occurred")
     return (res, 200)
