@@ -21,7 +21,7 @@ def processGraph():
     graph = nx.DiGraph()
     graph.add_nodes_from(nodes)
     graph.add_edges_from(edges)
-    positions = nx.spring_layout(graph)
+    positions = nx.kamada_kawai_layout(graph)
     positions = {key: list(map(lambda x: round(x, 2), list(value))) for key, value in positions.items()}
     res = json.dumps(positions)
     return (res, 200)
